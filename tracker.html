@@ -6,27 +6,30 @@
     <title>Period Tracker</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body >
-    <div class="bg-gray-100 p-6">
-        <div class="max-w-[1260px] mx-auto bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-bold text-pink-600 mb-4 text-center">Period Tracker</h2>
-    
+<body class="bg-zinc-900">
+    <div class="w-full flex justify-center items-center min-h-screen p-4">
+        <div class="w-full max-w-[1260px] mx-auto bg-zinc-800 p-4 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold text-white mb-4 text-center">Period Tracker</h2>
+
             <div class="flex justify-between items-center mb-4">
-                <button onclick="changeMonth(-3)" class="text-pink-600 font-semibold">&lt; Previous 3 Months</button>
-                <button onclick="changeMonth(3)" class="text-pink-600 font-semibold">Next 3 Months &gt;</button>
+                <button onclick="changeMonth(-3)" class="text-white font-semibold text-sm hidden sm:block">&lt; Previous 3 Months</button>
+                <button onclick="changeMonth(-3)" class="text-white font-semibold text-sm sm:hidden">&lt;</button>
+
+                <button onclick="changeMonth(3)" class="text-white font-semibold text-sm hidden sm:block">Next 3 Months &gt;</button>
+                <button onclick="changeMonth(3)" class="text-white font-semibold text-sm sm:hidden">&gt;</button>
             </div>
-    
+
             <div id="calendarContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-    
-            <div class="mt-6 flex justify-center gap-4 text-sm font-semibold">
+
+            <div class="mt-6 flex justify-center text-white gap-4 text-xs sm:text-sm font-semibold flex-wrap">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 bg-red-500 rounded-full"></span> Period Days
+                    <span class="w-3 h-3 sm:w-4 sm:h-4 bg-red-500 rounded-full"></span> Period Days
                 </div>
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 bg-yellow-400 rounded-full"></span> Ovulation Days
+                    <span class="w-3 h-3 sm:w-4 sm:h-4 bg-yellow-400 rounded-full"></span> Ovulation Days
                 </div>
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 bg-green-500 rounded-full"></span> Post-Period Days
+                    <span class="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full"></span> Post-Period Days
                 </div>
             </div>
         </div>
@@ -48,39 +51,53 @@
                 let monthName = date.toLocaleString("default", { month: "long", year: "numeric" });
                 let firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
                 let daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-                
+
                 let calendarHTML = `
-                    <div class="bg-gray-200 rounded-lg p-4">
-                        <h3 class="bg-pink-600 text-white text-center p-2 rounded-t-lg">${monthName}</h3>
-                        <div class="grid grid-cols-7 gap-2 text-center font-bold text-gray-700 mt-2">
+                    <div class=" bg-zinc-700 rounded-lg p-2 sm:p-4">
+                        <h3 class="bg-zinc-900 text-white text-center p-1 sm:p-2 rounded-t-lg text-sm sm:text-base">${monthName}</h3>
+                        <div class="grid grid-cols-7 gap-1 sm:gap-2 text-center text-xs sm:text-sm font-bold text-black mt-2">
                             <span>S</span> <span>M</span> <span>T</span> <span>W</span> <span>T</span> <span>F</span> <span>S</span>
                 `;
 
+                let daysArray = [];
+
                 for (let j = 0; j < firstDay; j++) {
-                    calendarHTML += `<span></span>`;
+                    daysArray.push("");
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    daysArray.push(day);
+                }
+
+                while (daysArray.length % 7 !== 0) {
+                    daysArray.push("");
                 }
 
                 let cycleStart = new Date(startDate);
                 cycleStart.setHours(0, 0, 0, 0);
-                
-                for (let day = 1; day <= daysInMonth; day++) {
-                    let tempDate = new Date(date.getFullYear(), date.getMonth(), day);
-                    tempDate.setHours(0, 0, 0, 0);
-                    let diff = Math.floor((tempDate - cycleStart) / (1000 * 60 * 60 * 24));
-                    let cycleDay = (diff % cycleLength + cycleLength) % cycleLength;
-                    
-                    let dayStyle = "bg-gray-100";
-                    if (cycleDay < periodDays) {
-                        dayStyle = "bg-red-500 text-white";
-                    } else if (cycleDay >= cycleLength - 14 && cycleDay <= cycleLength - 10) {
-                        dayStyle = "bg-yellow-400";
-                    } else if (cycleDay >= periodDays && cycleDay < periodDays + 2) {
-                        dayStyle = "bg-green-500 text-white";
-                    }
 
-                    calendarHTML += `<span class="rounded-full p-2 ${dayStyle}">${day}</span>`;
+                for (let day of daysArray) {
+                    if (day === "") {
+                        calendarHTML += `<span></span>`;
+                    } else {
+                        let tempDate = new Date(date.getFullYear(), date.getMonth(), day);
+                        tempDate.setHours(0, 0, 0, 0);
+                        let diff = Math.floor((tempDate - cycleStart) / (1000 * 60 * 60 * 24));
+                        let cycleDay = (diff % cycleLength + cycleLength) % cycleLength;
+
+                        let dayStyle = "bg-zinc-400";
+                        if (cycleDay < periodDays) {
+                            dayStyle = "bg-red-500 text-white";
+                        } else if (cycleDay >= cycleLength - 14 && cycleDay <= cycleLength - 10) {
+                            dayStyle = "bg-yellow-400";
+                        } else if (cycleDay >= periodDays && cycleDay < periodDays + 2) {
+                            dayStyle = "bg-green-500 text-white";
+                        }
+
+                        calendarHTML += `<span class="rounded-full p-1 sm:p-2 ${dayStyle}">${day}</span>`;
+                    }
                 }
-                
+
                 calendarHTML += `</div></div>`;
                 calendarContainer.innerHTML += calendarHTML;
             }
