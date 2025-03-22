@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -11,14 +11,14 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="main w-full p-1 h-screen font-[Roboto]">
+    <div class="main md:w-full h-screen font-[Roboto]">
         <!-- Home Page -->
-        <div class="home-page p-3 w-full h-full bg-[#F7EAFE] rounded-md">
+        <div class="home-page relative p-3 w-full h-full bg-zinc-100 rounded-md">
             <!-- App Logo & Name -->
             <nav class="">
                 <div class="flex items-center justify-between rounded-b-lg">
-                    <h1 class=" font-bold text-2xl ">Kshitij</h1>
-                    <div class="w-10 h-10 bg-red-500 rounded-full border-2 border-zinc-800 overflow-hidden flex items-center justify-center">
+                    <h1 class=" font-bold text-3xl">Kshitij</h1>
+                    <div class="w-15 h-15 shadow-lg bg-red-500 rounded-full border-2 border-zinc-800 overflow-hidden flex items-center justify-center">
                         <img class="w-full h-full bg-cover" src="https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg=" alt="">
                     </div>
                 </div>
@@ -27,31 +27,31 @@
             <!-- User -->
              <section>
                 <div class="pt-4">
-                    <h1 class="text-2xl font-[Sans]">Welcome,  <span class="font-semibold">Yashika</span></h1>
+                    <h1 class="text-3xl font-[Sans]">Welcome,  <span class="font-semibold">Yashika</span></h1>
                 </div>
              </section>
             
             <!-- Details -->
             <section>
                 <div class="my-3 font-semibold text-lg">
-                    <h1>Cycle Statistics</h1>
-                    <p class="text-sm text-zinc-500">Averages are based on your last 3 cycles.</p>
+                    <h1 class="text-xl">Cycle Statistics</h1>
+                    <p class="text-lg text-zinc-500">Averages are based on your last 3 cycles.</p>
                 </div>
                 <div class="w-full p-5 shadow-lg flex relative bg-pink-200 rounded-xl">
                 <div>
-                    <h1 class="text-sm">Period in.</h1>
-                    <h1 class="text-2xl font-[Poppins] font-bold">4 Days</h1>
+                    <h1 class="text-lg">Period in.</h1>
+                    <h1 class="text-3xl font-[Poppins] font-bold">4 Days</h1>
                 </div>
                 <div class="w-20 absolute -top-3 right-2">
                     <img class="" src="/calender.png" alt="">
                 </div>
                 </div>
                 <div class="w-full mt-2 p-5 shadow-lg bg-pink-200 rounded-xl">
-                    <h1 class="text-sm">Cycle Length</h1>
-                    <h1 class="text-2xl font-[Poppins] font-bold">28 Days</h1>
+                    <h1 class="text-lg">Cycle Length</h1>
+                    <h1 class="text-3xl font-[Poppins] font-bold">28 Days</h1>
                 </div>
                 <div class="my-3 font-semibold text-lg">
-                    <h1>Period Flow</h1>
+                    <h1 class="text-xl">Period Flow</h1>
                 </div>
                 <div class="w-full mt-2 p-5 shadow-lg flex gap-3 bg-pink-100 rounded-xl">
                     <div class="relative w-12 h-12 flex justify-center items-center">
@@ -59,12 +59,119 @@
                         <div class="absolute w-full h-full border-9 border-red-500 rounded-full border-t-transparent border-l-transparent border-r-transparent animate-spin-slow"></div>
                     </div>
                     <div>
-                        <h1 class="text-sm">Cycle Length</h1>
-                        <h1 class="text-2xl font-[Poppins] font-bold">28 Days</h1>
+                        <h1 class="text-lg">Cycle Length</h1>
+                        <h1 class="text-3xl font-[Poppins] font-bold">28 Days</h1>
                     </div>
                 </div>
             </section>
+
+            <!-- Cycle Length -->
+            <div class="py-3 my-5 shadow-lg bg-white">
+                <div class="flex justify-center my-4">
+                    <div class="relative">
+                        <div class="w-36 h-36 bg-gray-200 rounded-full flex items-center justify-center relative">
+                            <div class="absolute inset-0 rounded-full border-8 border-pink-300">
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full rounded-full border-4 border-yellow-400"></div>
+                            </div>
+                            <span class="text-4xl font-bold text-gray-800">4th</span>
+                            <div class="absolute bottom-8 text-sm text-gray-500">day</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-gray-500">Ovulation · 11 days left</div>
+                <div class="text-center my-4">
+                    <button class="bg-pink-500 text-white font-semibold py-2 px-4 rounded-full">Edit Period</button>
+                </div>
+            </div>
             
-    </div>
+            <!-- Cycle Phases -->
+            <div class="mt-6 relative w-auto">
+                <h2 class="text-lg font-bold mb-2">Menstrual Cycle Phases</h2>
+            
+                <!-- Scrollable Container -->
+                <div class=" flex space-x-3 overflow-x-scroll scrollbar-hide snap-x snap-mandatory scroll-smooth p-2">
+                    
+                    <div class="bg-zinc-300 w-[170px] h-[180px] rounded-lg overflow-hidden">
+                        <div class="relative flex ">
+                            <div class="text-white px-3 py-1 rounded-br-md bg-pink-500  text-xl font-bold">1</div>
+                            <div class="flex items-center ml-2 font-bold text-lg">Menstrual</div>
+                        </div>
+                        <div class="relative flex items-center justify-center">
+                            <div class="relative bg-zinc-100 w-32 h-32 rounded-full"></div>
+                            <img class="absolute w-30" src="/part.png" alt="">
+                        </div>
+                    </div>
+                    <div class="bg-zinc-300 w-[170px] h-[180px] rounded-lg overflow-hidden">
+                        <div class="relative flex ">
+                            <div class="text-white px-3 py-1 rounded-br-md bg-green-500  text-xl font-bold">2</div>
+                            <div class="flex items-center ml-2 font-bold text-lg">Follicular</div>
+                        </div>
+                        <div class="relative flex items-center justify-center">
+                            <div class="relative bg-zinc-100 w-32 h-32 rounded-full"></div>
+                            <img class="absolute w-30" src="/part.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Events -->
+            <div class="w-full my-5">
+                <h1 class="text-lg font-bold mt-3">Our Events</h1>
+                <div class="relative mt-2 rounded-xl w-full h-[28vh] bg-zinc-500">
+                    <button class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-5 py-2 bg-white font-bold rounded-xl">Learn More..</button>
+                </div>
+            </div>
+
+            <!-- About -->
+            <div class="w-full my-5">
+                <h1 class="text-lg font-bold mt-3">Read Our Blogs</h1>
+                <div class=" flex space-x-3 mt-2 overflow-x-scroll scrollbar-hide snap-x snap-mandatory scroll-smooth p-2">
+                    
+                    <div class=" w-[170px] h-[300px] rounded-lg overflow-hidden">
+                        <div class="flex w-full h-[130px] bg-zinc-300">
+
+                        </div>
+                        <div class="">
+                            <h1 class="text-sm text-justify">Lorem ipsum dolor sit amet, adipisicing elit. Aspernatur, ipsa.</h1>
+                        </div>
+                    </div>
+                    <div class=" w-[170px] h-[300px] rounded-lg overflow-hidden">
+                        <div class="flex w-full h-[130px] bg-zinc-300">
+
+                        </div>
+                        <div class="">
+                            <h1 class="text-sm text-justify">Lorem ipsum dolor sit amet, adipisicing elit. Aspernatur, ipsa.</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+            <!-- Footer -->
+            <div class="absolute fixed w-full bottom-2">
+                <div class="flex justify-between items-center bg-white px-6 py-5 -mb-2 rounded-lg shadow-lg w-full mt-4">
+                    <div class="flex flex-col items-center">
+                        <div class="text-pink-500"><i class="ri-home-6-line text-xl"></i></div>
+                        <div class="">Home</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-pink-500"><i class="ri-calendar-line text-xl"></i></div>
+                        <div class="">Calendar</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-pink-500"><i class="ri-line-chart-fill text-xl"></i></div>
+                        <div class="">Tracker</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-pink-500"><i class="ri-article-line text-xl"></i></div>
+                        <div class="">Articles</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-pink-500"><i class="ri-user-fill text-xl"></i></div>
+                        <div class="">Account</div>
+                    </div>
+                </div>
+            </div>
 </body>
 </html>
